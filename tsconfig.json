@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "compilerOptions": {
+    "lib": ["esnext", "dom", "dom.iterable"],
+    "module": "Preserve",
+    "moduleResolution": "bundler",
+    "moduleDetection": "force",
+    "target": "es2020",
+    "allowImportingTsExtensions": false,
+    "allowJs": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "incremental": false,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "noUncheckedIndexedAccess": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "useDefineForClassFields": true,
+    "verbatimModuleSyntax": true,
+    "types": ["./reset.d.ts"],
+    "noEmit": true,
+    "paths": {
+      "@swarmnode-ai/sdk": ["./src"],
+      "@swarmnode-ai/sdk/*": ["./src/*"]
+    }
+  },
+  "include": ["**/*.ts", "**/*.js", "eslint.config.js"]
+}

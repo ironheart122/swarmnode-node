@@ -1,0 +1,25 @@
+name: 🤖 PR Checks
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  lint:
+    if: github.actor != 'dependabot[bot]'
+    uses: ./.github/workflows/lint_check.yml
+    secrets: inherit
+
+  tests:
+    if: github.actor != 'dependabot[bot]'
+    uses: ./.github/workflows/tests.yml
+    secrets: inherit
+    needs: [lint]

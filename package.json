@@ -1,0 +1,76 @@
+{
+  "private": false,
+  "name": "@ironheart122/snai-sdk",
+  "version": "1.0.0",
+  "description": "The TypeScript SDK for the SwarmNode AI API (Internal)",
+  "license": "MIT",
+  "author": "SwarmNode AI (https://swarmnode.ai)",
+  "type": "module",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "check-exports": "attw --pack . --ignore-rules=cjs-resolves-to-esm",
+    "ci:build": "npm run build && npm run check-exports",
+    "dev": "tsup --watch",
+    "format": "prettier --write \"**/*.{js,ts,md}\"",
+    "format:package-json": "prettier-package-json --write",
+    "lint": "eslint .",
+    "local-release": "changeset version && changeset publish",
+    "prepare": "husky",
+    "publish:npm": "pnpm publish --access public",
+    "test": "vitest",
+    "typecheck": "tsc --noEmit",
+    "ws": "tsx examples/wss.ts"
+  },
+  "types": "dist/index.d.ts",
+  "dependencies": {
+    "node-fetch": "^3.3.2",
+    "ws": "^8.18.0"
+  },
+  "devDependencies": {
+    "@arethetypeswrong/cli": "^0.17.2",
+    "@changesets/cli": "^2.27.11",
+    "@commitlint/cli": "^19.6.1",
+    "@commitlint/config-conventional": "^19.6.0",
+    "@eslint/js": "^9.17.0",
+    "@ianvs/prettier-plugin-sort-imports": "^4.4.0",
+    "@total-typescript/ts-reset": "^0.6.1",
+    "@types/node": "^22.10.2",
+    "@types/ws": "^8.5.13",
+    "eslint": "^9.17.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "eslint-plugin-vitest": "^0.5.4",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.2.11",
+    "prettier": "^3.4.2",
+    "prettier-package-json": "^2.8.0",
+    "tsup": "^8.3.5",
+    "tsx": "^4.19.2",
+    "type-fest": "^4.31.0",
+    "typescript": "^5.7.2",
+    "typescript-eslint": "^8.19.0",
+    "vitest": "^2.1.8"
+  },
+  "engines": {
+    "node": ">=20.18.1"
+  },
+  "lint-staged": {
+    "**/*.{js,ts}": [
+      "prettier --check"
+    ],
+    "package.json": [
+      "prettier-package-json --write"
+    ]
+  },
+  "packageManager": "pnpm@9.15.1"
+}
